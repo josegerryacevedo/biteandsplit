@@ -34,9 +34,8 @@ const SplitBillForm = ({ selectedFriend, onSplitBill }: SplitBillProps) => {
                     <div className="flex justify-between items-center w-72">
                         <label className="font-semibold text-sm" htmlFor="bill-value">Bill value</label>
                         <input
-                            type="number"
+                            type="text"
                             id="bill-value"
-                            min={0}
                             value={bill}
                             onChange={(e) => setBill(Number(e.target.value))}
                             className="w-24 bg-white p-1 rounded focus:outline-slate-700 text-center font-semibold"
@@ -45,8 +44,7 @@ const SplitBillForm = ({ selectedFriend, onSplitBill }: SplitBillProps) => {
                     <div className="flex justify-between items-center w-72 mt-3">
                         <label className="font-semibold text-sm" htmlFor="my-expenses">Your expense</label>
                         <input
-                            type="number"
-                            min={0}
+                            type="text"
                             id="my-expenses"
                             value={paidByUser}
                             onChange={(e) => setPaidByUser(Number(e.target.value) > bill ? paidByUser : Number(e.target.value))}
