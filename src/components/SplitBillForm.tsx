@@ -54,7 +54,7 @@ const SplitBillForm = ({ selectedFriend, onSplitBill }: SplitBillProps) => {
                     <div className="flex justify-between items-center w-72 mt-3">
                         <label className="font-semibold text-sm" htmlFor="friend-bill">{selectedFriend.name}'s expense</label>
                         <input
-                            type="number"
+                            type="text"
                             id="friend-bill"
                             value={totalFriendBill}
                             className="w-24 bg-white p-1 rounded text-center focus:outline-none font-semibold" readOnly
