@@ -2,13 +2,11 @@
   "name": "bite-and-split",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://josegerryacevedo.github.io/biteandsplit.github.io/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
-    "deploy": "gh-pages -d dist",
     "preview": "vite preview"
   },
   "dependencies": {
