@@ -17,12 +17,11 @@ const SplitBillForm = ({ selectedFriend, onSplitBill }: SplitBillProps) => {
     const [paidByUser, setPaidByUser] = useState<number>(0);
     const [whoIsPaying, setWhoIsPaying] = useState<string>("user");
 
-
     const totalFriendBill = bill - paidByUser;
 
     const handleBill = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!bill || !paidByUser) return;
+        if (bill <= 0 || paidByUser < 0) return;
         onSplitBill({ amount: whoIsPaying === "user" ? totalFriendBill : -paidByUser });
     }
 
@@ -34,30 +33,34 @@ const SplitBillForm = ({ selectedFriend, onSplitBill }: SplitBillProps) => {
                     <div className="flex justify-between items-center w-72">
                         <label className="font-semibold text-sm" htmlFor="bill-value">Bill value</label>
                         <input
-                            type="text"
+                            type="number"
                             id="bill-value"
-                            value={bill}
+                            // value={bill}
+                            placeholder="0"
                             onChange={(e) => setBill(Number(e.target.value))}
-                            className="w-24 bg-white p-1 rounded focus:outline-slate-700 text-center font-semibold"
+                            className="w-24 bg-white p-1 rounded focus:outline-slate-700 text-center font-semibold [&::-webkit-inner-spin-button]:appearance-none"
+                            min={0}
                         />
                     </div>
                     <div className="flex justify-between items-center w-72 mt-3">
-                        <label className="font-semibold text-sm" htmlFor="my-expenses">Your expense</label>
+                        <label className="font-semibold text-sm" htmlFor="my-bill">Your expense</label>
                         <input
-                            type="text"
-                            id="my-expenses"
-                            value={paidByUser}
+                            type="number"
+                            id="my-bill"
+                            // value={paidByUser}
+                            placeholder="0"
                             onChange={(e) => setPaidByUser(Number(e.target.value) > bill ? paidByUser : Number(e.target.value))}
-                            className="w-24 bg-white p-1 rounded focus:outline-slate-700 text-center font-semibold"
+                            className="w-24 bg-white p-1 rounded focus:outline-slate-700 text-center font-semibold [&::-webkit-inner-spin-button]:appearance-none"
+                            min={0}
                         />
                     </div>
                     <div className="flex justify-between items-center w-72 mt-3">
                         <label className="font-semibold text-sm" htmlFor="friend-bill">{selectedFriend.name}'s expense</label>
                         <input
-                            type="text"
+                            type="number"
                             id="friend-bill"
                             value={totalFriendBill}
-                            className="w-24 bg-white p-1 rounded text-center focus:outline-none font-semibold" readOnly
+                            className="w-24 bg-white p-1 rounded text-center focus:outline-none font-semibold [&::-webkit-inner-spin-button]:appearance-none" readOnly
                         />
                     </div>
                     <div className="flex justify-between items-center w-72 mt-3">

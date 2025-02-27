@@ -38,7 +38,7 @@ function App() {
   };
 
   const handleSplitBill = (value: { amount: number; }) => {
-    console.log(value.amount)
+    // console.log(value.amount);
     setShowAddFriendForm(false);
     setFriends((friends) =>
       friends.map(friend =>
@@ -65,8 +65,7 @@ function App() {
             />
             {/* Add friend form */}
             <div
-              className={`grid w-full transition-all duration-500 ease-in-out overflow-hidden ${isShowAddFriendForm ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                }`}
+              className={`grid w-full transition-all duration-500 ease-in-out overflow-hidden ${isShowAddFriendForm ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
             >
               <div className="min-h-0">
                 <AddFriendForm onAddFriend={handleAddFriend} />
@@ -82,13 +81,17 @@ function App() {
           </div>
           {/* Split bill form */}
           <div
-            className={`transition-all duration-500 ease-in-out overflow-hidden ${selectedFriend !== null
+            className={`transition-all duration-1000 ease-in-out ${selectedFriend !== null
               ? 'opacity-100 scale-100' // Expand height and fade in
               : 'opacity-0 scale-95' // Collapse height and fade out
               }`}
           >
             {selectedFriend !== null && (
-              <SplitBillForm selectedFriend={selectedFriend} onSplitBill={handleSplitBill} />
+              <SplitBillForm
+                selectedFriend={selectedFriend}
+                onSplitBill={handleSplitBill}
+                key={selectedFriend.id}
+              />
             )}
           </div>
         </div>
