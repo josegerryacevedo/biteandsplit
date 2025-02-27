@@ -8,8 +8,7 @@ interface SplitBillProps {
         amount: number;
         url: string;
     };
-    // pass the amount
-    onSplitBill: (amount: { amount: number }) => void;
+    onSplitBill: (amount: { amount: number }) => void; // pass the amount
 }
 
 const SplitBillForm = ({ selectedFriend, onSplitBill }: SplitBillProps) => {
